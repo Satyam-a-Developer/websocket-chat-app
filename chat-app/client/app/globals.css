@@ -29,6 +29,8 @@
 
 .name-input2 {
   background-color: black;
+  position: absolute;
+  min-width: 100vw;
   color: white;
   display: flex;
   align-items: center;
