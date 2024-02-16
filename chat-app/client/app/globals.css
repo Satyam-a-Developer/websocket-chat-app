@@ -6,8 +6,15 @@
   background-color: white;
   border-radius: 10px;
 }
-.chat h2{
-  margin: 10px;letter-spacing: normal;
+.chat li{
+  margin: 30px;
+  font-size: 30px;
+  color: #000000;
+  list-style-image:url('chat.png')  ;
+  list-style-type: circle;
+
+ 
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .chat {
   background-color: #606c38;

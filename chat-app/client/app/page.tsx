@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
-import ReactDOM from "react-dom/client";
 
 function index() {
   const inputname = useRef();
@@ -34,7 +33,7 @@ function index() {
     };
 
     socket.on("message", (text) => {
-      const el = document.createElement("h2");
+      const el = document.createElement("li");
       el.innerHTML = text;
       document.querySelector(".chat").appendChild(el);
     });
