@@ -35,7 +35,7 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
-.next
+.next/server
 
 chat-app/client/.next/server/server-reference-manifest.json
 chat-app/client/.next/trace
