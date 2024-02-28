@@ -90,8 +90,12 @@ body {
 
 .name {
   background-color: antiquewhite;
+  position: relative;
   color: black;
-  border-radius: 100px;
+  height: 80vh;
+  margin-inline: 10px;
+  width: 20vw;
+  border-radius: 30px;
   padding: 10px;
 }
 .input {
@@ -113,4 +117,8 @@ body {
   font-size: 40px;
   background-color: white;
   border-radius: 10px;
+}
+
+.slidebar {
+  display: flex;
 }

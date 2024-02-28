@@ -1,3 +1,4 @@
+const { text } = require('express');
 
 const http = require('http').createServer();
 
@@ -8,37 +9,22 @@ const io = require('socket.io')(http, {
 io.on('connection', (socket) => {
     console.log('a user connected');
 
-
-    socket.on('name', (text2) =>     {
-        console.log(text2);
-        io.emit('name', `Has joined ${text2}` ); 
+    let text = ''; 
+    socket.on('name', (name) =>     {
+        console.log(name);
+        text = name;
+        io.emit('name', `Has joined ${name}` ); 
           
     });
 
     socket.on('message', (message) =>     {
-        console.log(message);
-        io.emit('message', `${socket.id.substr(0,2)} said ${message}` ); 
+        console.log(message,text);
+        io.emit('message', `${text} said ${message}` ); 
           
     });
 });
 
 http.listen(8080, () => console.log('listening on http://localhost:8080') );
-
-
-// Regular Websockets
-
-// const WebSocket = require('ws')
-// const server = new WebSocket.Server({ port: '8080' })
-
-// server.on('connection', socket => { 
-
-//   socket.on('message', message => {
-
-//     socket.send(`Roger that! ${message}`);
-
-//   });
-
-// });
 
 
  
