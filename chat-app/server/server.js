@@ -19,7 +19,7 @@ io.on('connection', (socket) => {
 
     socket.on('message', (message) =>     {
         console.log(message,text);
-        io.emit('message', `${text} said ${message}` ); 
+        io.emit('message', `${text} said:<br/><span>${message}<span/>`);
           
     });
 });
