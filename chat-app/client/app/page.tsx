@@ -7,6 +7,7 @@ function index() {
   const inputname = useRef();
   const [hide, sethide] = useState(true);
   const namebtn = useRef();
+  const [newk, setnewk] = useState(" ");
   const messageinput = useRef();
   const messagebtn = useRef();
 
@@ -24,6 +25,7 @@ function index() {
     });
 
     namebtn.current.onclick = () => {
+      
       const name = inputname.current.value || undefined;
       socket.emit("name", name);
     };
@@ -34,9 +36,17 @@ function index() {
       document.querySelector(".chat").appendChild(el);
     });
 
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const text = messageinput.current.value || undefined;
+        socket.emit("message", text);
+        messageinput.current.value = "";
+      }
+    });
     messagebtn.current.onclick = () => {
-      const text = messageinput.current.value;
+      const text = messageinput.current.value || undefined;
       socket.emit("message", text);
+      messageinput.current.value = "";
     };
   }, []);
   function nucke() {
@@ -55,15 +65,19 @@ function index() {
         </div>
       )}
       <div className="slidebar">
-
-     
-
-      <div className="name"></div>
-      <div className="chat"></div>
+        <div className="name"></div>
+        <div className="chat"></div>
       </div>
       <div className="input">
         <div className="all">
-          <input placeholder="message" id="message-input" ref={messageinput} />
+          {/* <textarea id="message-input" ref={messageinput} value={newk}/> */}
+          <input
+            placeholder="message"
+            id="message-input"
+            ref={messageinput}
+            value={newk} // Bind the state variable to the value prop
+            onChange={(event) => setnewk(event.target.value)}
+          />
           <button id="message" ref={messagebtn}>
             Send
           </button>
